@@ -7,7 +7,7 @@ import { useState, useEffect, useContext } from "react";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 axios.defaults.withCredentials = true;
 
-export default function page() {
+export default function Home() {
   const { axiosJWT, token, jenis, bahan, getBahanbakuSrch, col, MySwal, toat } = useContext(Contex);
   const [msg, setMsg] = useState();
 

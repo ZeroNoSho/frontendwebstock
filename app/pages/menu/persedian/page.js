@@ -6,7 +6,7 @@ import { faRotate, faTableCells } from "@fortawesome/free-solid-svg-icons";
 import { useState, useContext, useEffect } from "react";
 axios.defaults.withCredentials = true;
 
-export default function page() {
+export default function Home() {
   const { refreshPage, getBarangexel, getBarang, persedian } = useContext(Contex);
 
   useEffect(() => {

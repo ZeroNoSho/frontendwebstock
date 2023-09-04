@@ -5,7 +5,7 @@ import { Contex } from "@/app/Context/store";
 import { useState, useEffect, useContext } from "react";
 axios.defaults.withCredentials = true;
 
-export default function page() {
+export default function Home() {
   const { axiosJWT, token, jenis } = useContext(Contex);
   const [msg, setMsg] = useState();
   const [jenisValue, setJenisValue] = useState();

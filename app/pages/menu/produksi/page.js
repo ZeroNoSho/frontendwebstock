@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect, useContext } from "react";
 
-export default function page() {
+export default function Home() {
   const { axiosJWT, token, produksi, getProduksi, MySwal, router } = useContext(Contex);
 
   const [msg, setMsg] = useState("");

@@ -7,7 +7,7 @@ import { useState, useEffect, useContext } from "react";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 axios.defaults.withCredentials = true;
 
-export default function page() {
+export default function Home() {
   const { axiosJWT, token, getJenis, jenis, MySwal, toat, col } = useContext(Contex);
 
   const [jenisValue, setJenisValue] = useState();
@@ -22,7 +22,7 @@ export default function page() {
     setTimeout(() => {
       setMsg("");
     }, 2000);
-  }, [msg]);
+  }, [getJenis]);
 
   const updateinput = (e) => {
     e.preventDefault();

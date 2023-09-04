@@ -2,7 +2,7 @@
 import { Contex } from "@/app/Context/store";
 import { useContext, useEffect } from "react";
 
-export default function page() {
+export default function Home() {
   const { pembelian, getBarang } = useContext(Contex);
 
   useEffect(() => {

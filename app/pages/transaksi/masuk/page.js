@@ -4,7 +4,7 @@ import { Contex } from "@/app/Context/store";
 import { useState, useContext } from "react";
 axios.defaults.withCredentials = true;
 
-export default function page() {
+export default function Home() {
   const { axiosJWT, token, persedian, toat } = useContext(Contex);
   const [data, setData] = useState();
   const [stock, setStock] = useState();

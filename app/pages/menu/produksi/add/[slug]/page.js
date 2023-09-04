@@ -6,7 +6,7 @@ import { useState, useContext } from "react";
 axios.defaults.withCredentials = true;
 import { useParams } from "next/navigation";
 
-export default function page() {
+export default function Home() {
   const params = useParams();
   const { axiosJWT, token, toat, databarang } = useContext(Contex);
   const [stock, setStock] = useState();
