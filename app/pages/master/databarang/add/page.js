@@ -7,7 +7,7 @@ axios.defaults.withCredentials = true;
 
 export default function page() {
   const { axiosJWT, token, jenis, toat, bahan } = useContext(Contex);
-  const [jenisValue, setJenisValue] = useState();
+  const [jenisvalue, setJenisvalue] = useState();
   const [nama, setNama] = useState();
   const [stock, setStock] = useState();
   const [cheakbox, setCheakbox] = useState([]);
@@ -16,7 +16,7 @@ export default function page() {
     e.preventDefault();
     const response = await axiosJWT.post(
       `https://backendwebstock.vercel.app/Barang`,
-      { nama: nama, jenis: jenisValue, stok: stock, bahan: cheakbox.toString() },
+      { nama: nama, jenis: jenisvalue, stok: stock, bahan: cheakbox.toString() },
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -54,7 +54,7 @@ export default function page() {
           </label>
 
           <label>Jenis Barang</label>
-          <select className="w-full p-2 my-5 border border-gray-300 rounded-lg" onChange={(e) => setJenisValue(e.target.value)} fdprocessedid="true" value={jenisValue}>
+          <select className="w-full p-2 my-5 border border-gray-300 rounded-lg" onChange={(e) => setJenisvalue(e.target.value)} fdprocessedid="true" value={jenisvalue}>
             <option></option>
             {jenis?.map((item) => (
               <option key={item.id} value={item.jenis}>

@@ -11,7 +11,7 @@ export default function Home() {
 
   useEffect(() => {
     getTransaksi(tabel, tabel2, 5);
-  }, [tabel, tabel2]);
+  }, [tabel, tabel2, getTransaksi]);
 
   return (
     <div className="mx-15 text-slate-500 max-h-full min-h-screen ">
