@@ -12,7 +12,7 @@ export default function page() {
   const postData = async (e) => {
     e.preventDefault();
     const response = await axiosJWT.post(
-      `http://localhost:5000/Jenis`,
+      `https://backendwebstock.vercel.app/Jenis`,
       { jenis: jenisValue },
       {
         headers: {

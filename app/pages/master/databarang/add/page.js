@@ -15,7 +15,7 @@ export default function page() {
   const postData = async (e) => {
     e.preventDefault();
     const response = await axiosJWT.post(
-      `http://localhost:5000/Barang`,
+      `https://backendwebstock.vercel.app/Barang`,
       { nama: nama, jenis: jenisValue, stok: stock, bahan: cheakbox.toString() },
       {
         headers: {

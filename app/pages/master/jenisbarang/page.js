@@ -36,7 +36,7 @@ export default function page() {
     if (e.target.dataset.key !== undefined) {
       const id = e.target.dataset.key;
       const response = await axiosJWT.patch(
-        `http://localhost:5000/Jenis/${id}`,
+        `https://backendwebstock.vercel.app/Jenis/${id}`,
         { jenis: jenisValue },
         {
           headers: {
@@ -53,7 +53,7 @@ export default function page() {
   const delet = async (e) => {
     if (e.target.dataset.key !== undefined) {
       const id = e.target.dataset.key;
-      const response = await axiosJWT.delete(`http://localhost:5000/Jenis/${id}`, {
+      const response = await axiosJWT.delete(`https://backendwebstock.vercel.app/Jenis/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -40,7 +40,7 @@ export default function page() {
   const update = async (e) => {
     const id = e.target.dataset.key;
     const response = await axiosJWT.patch(
-      `http://localhost:5000/Barang/${id}`,
+      `https://backendwebstock.vercel.app/Barang/${id}`,
       { nama: nama, jenis: jenisvalue, stok: parseInt(stock) },
       {
         headers: {
@@ -56,7 +56,7 @@ export default function page() {
   const delet = async (e) => {
     if (e.target.dataset.key !== undefined) {
       const id = e.target.dataset.key;
-      const response = await axiosJWT.delete(`http://localhost:5000/Barang/${id}`, {
+      const response = await axiosJWT.delete(`https://backendwebstock.vercel.app/Barang/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

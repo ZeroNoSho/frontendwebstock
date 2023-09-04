@@ -16,7 +16,7 @@ export default function page() {
     const namas = nama.split(",");
     e.preventDefault();
     const response = await axiosJWT.patch(
-      `http://localhost:5000/Produksi/${params.slug}`,
+      `https://backendwebstock.vercel.app/Produksi/${params.slug}`,
       {
         nama: namas[0],
         jenis: namas[1],
