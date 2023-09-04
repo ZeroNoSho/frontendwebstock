@@ -22,7 +22,7 @@ export default function Home() {
     setTimeout(() => {
       setMsg("");
     }, 2000);
-  }, [getJenis]);
+  }, [msg]);
 
   const updateinput = (e) => {
     e.preventDefault();
