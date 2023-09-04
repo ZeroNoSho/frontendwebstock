@@ -23,7 +23,7 @@ export default function Home() {
   const [chkbox5, setChkbox5] = useState(true);
 
   useEffect(() => {
-    getData_Barang();
+    getData_Barang("");
     setTimeout(() => {
       setMsg("");
     }, 2000);

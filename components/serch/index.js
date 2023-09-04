@@ -25,7 +25,7 @@ export default function Serch({ halaman, get, hidden }) {
           </p>
           <input
             onChange={(e) => {
-              get(e.target.value);
+              get(e.target.value || "");
             }}
             type="text"
             placeholder="Search"

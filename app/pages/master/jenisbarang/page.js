@@ -18,36 +18,30 @@ export default function Home() {
   const [chkbox2, setChkbox2] = useState(true);
 
   useEffect(() => {
-    getJenis();
+    getJenis("");
     setTimeout(() => {
       setMsg("");
     }, 2000);
-  }, [msg, disableds]);
+  }, [msg]);
 
-  const updateinput = (e) => {
-    e.preventDefault();
-    if (e.target.dataset.key !== undefined) {
-      setDdisableds(e.target.dataset.key);
-      setJenisValue(e.target.dataset.key2);
-    }
+  const updateinput = (id, jenis) => {
+    setDdisableds(id);
+    setJenisValue(jenis);
   };
 
-  const update = async (e) => {
-    if (e.target.dataset.key !== undefined) {
-      const id = e.target.dataset.key;
-      const response = await axiosJWT.patch(
-        `https://backendwebstock.vercel.app/Jenis/${id}`,
-        { jenis: jenisValue },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      toat("edit");
-      setMsg(response.data.msg);
-      setDdisableds("");
-    }
+  const update = async (id, jenis) => {
+    const response = await axiosJWT.patch(
+      `https://backendwebstock.vercel.app/Jenis/${id}`,
+      { jenis: jenis },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    toat("edit");
+    setMsg(response.data.msg);
+    setDdisableds("");
   };
 
   const delet = async (e) => {
@@ -108,8 +102,8 @@ export default function Home() {
                   </td>
                   <td className={`border border-gray-300 p-4 text-slate-500  ${!chkbox2 ? "hidden" : ""}`}>
                     <div className="basis-1/12 flex flex-row text-center" data-key={item.id}>
-                      <p className={`${disableds == item.id ? "" : "hidden"} basis-1/2 cursor-pointer`} data-key={item.id} onClick={update}>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" className="m-auto" data-key={item.id} onClick={update}>
+                      <p className={`${disableds == item.id ? "" : "hidden"} basis-1/2 cursor-pointer`} onClick={() => update(item.id, jenisValue)}>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" className="m-auto" data-key={item.id} onClick={() => update(item.id, jenisValue)}>
                           <path
                             data-key={item.id}
                             onClick={update}
@@ -118,8 +112,8 @@ export default function Home() {
                           />
                         </svg>
                       </p>
-                      <p className={`basis-1/2 cursor-pointer ${disableds == item.id ? "hidden" : ""}`} data-key={item.id} data-key2={item.jenis} onClick={updateinput}>
-                        <FontAwesomeIcon icon={faPencil} data-key={item.id} data-key2={item.jenis} onClick={updateinput} />
+                      <p className={`basis-1/2 cursor-pointer ${disableds == item.id ? "hidden" : ""}`} onClick={() => updateinput(item.id, item.jenis)}>
+                        <FontAwesomeIcon icon={faPencil} onClick={() => updateinput(item.id, item.jenis)} />
                       </p>
                       <p className="basis-1/2 cursor-pointer text-center" data-key={item.id} onClick={delet2}>
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" className="m-auto" data-key={item.id} onClick={delet2}>
