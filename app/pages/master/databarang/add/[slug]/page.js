@@ -12,11 +12,9 @@ export default function Home() {
   const [jenisvalue, setJenisvalue] = useState(data[2]);
   const [nama, setNama] = useState(data[1]);
   const [stock, setStock] = useState(data[3]);
-  const [dis, setDis] = useState(false);
 
   const update = async (e) => {
     e.preventDefault();
-    setDis(true);
     axiosJWT
       .patch(
         `https://backendwebstock.vercel.app/Barang/${params.slug}`,
@@ -103,7 +101,7 @@ export default function Home() {
             <input value={stock || ""} type="number" className="w-full p-2 my-5 border border-gray-300 rounded-lg" fdprocessedid="false" onChange={(e) => setStock(e.target.value)} />
           </label>
 
-          <button disabled={dis} className="blue text-slate-100 py-2 rounded-lg mr-2 px-10" fdprocessedid="true">
+          <button className="blue text-slate-100 py-2 rounded-lg mr-2 px-10" fdprocessedid="true">
             Save
           </button>
           <Link href={"/pages/master/databarang"} className="color_body text-slate-500 py-2 rounded-lg px-10" fdprocessedid="true">
