@@ -32,7 +32,7 @@ export default function Home() {
     setTimeout(() => {
       setMsg("");
     }, 2000);
-  }, [msg, limit]);
+  }, [msg]);
 
   const updateinput = (e) => {
     e.preventDefault();
@@ -43,7 +43,6 @@ export default function Home() {
       setStock(parseInt(datas[5]));
       setKet(datas[6].toString());
       setDdisableds(parseInt(datas[0]));
-      console.log(datas[4]);
     }
   };
 
@@ -78,7 +77,7 @@ export default function Home() {
           Authorization: `Bearer ${token}`,
         },
       });
-      setMsg(response.data.msg);
+      setMsg("del");
     }
   };
   const delet2 = (e) => {

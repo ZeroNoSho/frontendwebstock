@@ -5,7 +5,7 @@ import { useState, useContext } from "react";
 axios.defaults.withCredentials = true;
 
 export default function Home() {
-  const { axiosJWT, token, persedian, toat } = useContext(Contex);
+  const { axiosJWT, token, bahan, toat } = useContext(Contex);
   const [data, setData] = useState();
   const [stock, setStock] = useState();
   const [ket, setKet] = useState();
@@ -52,8 +52,8 @@ export default function Home() {
             <p className="font-semibold">Nama Barang</p>
             <select className="w-full rounded-md p-1 border border-gray-300" onChange={(e) => setData(e.target.value.toString())} fdprocessedid="true" value={"" || data}>
               <option value={""}>Pilih Barang</option>
-              {persedian?.map((item) => (
-                <option key={item.key} value={[item.nama, item.tipe, item.jenis].toString()}>
+              {bahan?.result.map((item) => (
+                <option key={item.id} value={[item.nama, item.tipe, item.jenis].toString()}>
                   {item.nama}
                 </option>
               ))}

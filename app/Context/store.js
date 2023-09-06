@@ -43,6 +43,13 @@ const Provider = ({ children }) => {
 
   useEffect(() => {
     getToken();
+    getJenis();
+    getBarang();
+    rencana_pembelian();
+    getBahanbakuSrch();
+    getData_Barang();
+    getTransaksi();
+    getProduksi();
   }, []);
 
   //token
@@ -54,13 +61,6 @@ const Provider = ({ children }) => {
         const decode = jwt_decode(res.data.accessToken);
         setExp(decode.exp);
         setName(decode.name);
-        getJenis();
-        getBarang();
-        rencana_pembelian();
-        getBahanbakuSrch();
-        getData_Barang();
-        getTransaksi();
-        getProduksi();
       })
       .catch((err) => {
         if (err.response) {
