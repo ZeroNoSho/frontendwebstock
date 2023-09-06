@@ -1,6 +1,5 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { Provider } from "./Context/store";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +15,7 @@ export default function RootLayout({ children }) {
         <title>WEB-STOCK</title>
       </head>
       <body className={inter.className} suppressHydrationWarning={true}>
-        <Provider>{children}</Provider>
+        {children}
       </body>
     </html>
   );
