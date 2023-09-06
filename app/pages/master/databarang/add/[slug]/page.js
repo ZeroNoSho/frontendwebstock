@@ -17,23 +17,31 @@ export default function Home() {
   const update = async (e) => {
     e.preventDefault();
     setDis(true);
-    const response = await axiosJWT.patch(
-      `https://backendwebstock.vercel.app/Barang/${params.slug}`,
-      { nama: nama, jenis: jenisvalue, stok: parseInt(stock), bahan: bahanvalue.toString() },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-
-    toat("edit");
-    setStock("");
-    setNama("");
-    setData("");
-    setTimeout(() => {
-      router.push(`/pages/master/databarang`);
-    }, 1000);
+    axiosJWT
+      .patch(
+        `https://backendwebstock.vercel.app/Barang/${params.slug}`,
+        { nama: nama, jenis: jenisvalue, stok: parseInt(stock), bahan: bahanvalue.toString() },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        toat("edit");
+        setStock("");
+        setNama("");
+        setData("");
+        setTimeout(() => {
+          router.push(`/pages/master/databarang`);
+        }, 1000);
+      })
+      .catch((error) => {
+        if (error.response) {
+          const errorMsg = error.response.data.msg; // Anda perlu menyesuaikan dengan struktur respons dari server
+          setMsg(errorMsg); // Anda perlu mendefinisikan fungsi setMsg sebelumnya
+        }
+      });
   };
 
   const CheackBox = (e) => {
