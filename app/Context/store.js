@@ -22,6 +22,10 @@ const Provider = ({ children }) => {
   const [exp, setExp] = useState("");
   const [name, setName] = useState("");
 
+  //updae state
+  const [data, setData] = useState([]);
+  const [bahanvalue, setBahanvalue] = useState([]);
+
   //getJenis
   const [jenis, setJenis] = useState();
   //getJenis
@@ -210,6 +214,11 @@ const Provider = ({ children }) => {
   return (
     <Contex.Provider
       value={{
+        data,
+        setData,
+        bahanvalue,
+        setBahanvalue,
+
         router,
         setCol,
         col,
