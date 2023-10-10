@@ -15,8 +15,8 @@ export default function Home() {
   const postData = async (e) => {
     e.preventDefault();
     const response = await axiosJWT.post(
-      `https://backendwebstock.vercel.app/Barang`,
-      { nama: nama, jenis: jenisvalue, stok: stock, bahan: cheakbox.toString() },
+      `http://localhost:5000/Barang`,
+      { nama: nama, jenis: jenisvalue, stok: stock, bahan: cheakbox.toString()},
       {
         headers: {
           Authorization: `Bearer ${token}`,

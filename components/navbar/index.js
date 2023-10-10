@@ -13,7 +13,7 @@ export default function Nav() {
 
   const Logout = async () => {
     try {
-      await axios.delete("https://backendwebstock.vercel.app/logout");
+      await axios.delete("hhttp://localhost:5000/logout");
       router.push(`/`);
     } catch (error) {
       console.log(error);

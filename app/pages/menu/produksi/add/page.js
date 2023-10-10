@@ -14,7 +14,7 @@ export default function Home() {
     e.preventDefault();
     const namas = nama.split(",");
     const response = await axiosJWT.post(
-      `https://backendwebstock.vercel.app/Produksi`,
+      `http://localhost:5000/Produksi`,
       {
         nama: namas[0],
         jenis: namas[1],

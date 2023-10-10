@@ -3,34 +3,37 @@ import axios from "axios";
 import Link from "next/link";
 import { Contex } from "@/app/Context/store";
 import { useState, useEffect, useContext } from "react";
+import { useParams } from "next/navigation";
 axios.defaults.withCredentials = true;
 
 export default function Home() {
-  const { axiosJWT, token, jenis, toat } = useContext(Contex);
+  const params = useParams();
+  const { axiosJWT, token, jenis, toat, bahanvalue, setBahanvalue, router } =
+    useContext(Contex);
   const [msg, setMsg] = useState();
-  const [jenisValue, setJenisValue] = useState();
-  const [nama, setNama] = useState();
-  const [stock, setStock] = useState();
-  const [harga, setHarga] = useState();
-  const [biayapesan, setBiayapesan] = useState();
-  const [biayapenyimpanan, setBiayapenyimpanan] = useState();
-  const [ukuran, setUkuran] = useState();
+  const [jenisValue, setJenisValue] = useState(bahanvalue[1]);
+  const [nama, setNama] = useState(bahanvalue[0]);
+  const [stock, setStock] = useState(bahanvalue[2]);
+  const [harga, setHarga] = useState(bahanvalue[3]);
+  const [biayapesan, setBiayapesan] = useState(bahanvalue[4]);
+  const [biayapenyimpanan, setBiayapenyimpanan] = useState(bahanvalue[5]);
+  const [ukuran, setUkuran] = useState(bahanvalue[6]);
 
-  useEffect(() => {
+  if (bahanvalue == 0) {
     setTimeout(() => {
-      setMsg("");
+      router.push(`/pages/menu/bahanbaku`);
     }, 2000);
-  }, [msg]);
+  }
 
-  const postData = async (e) => {
+  const update = async (e) => {
     e.preventDefault();
-    const response = await axiosJWT.post(
-      `http://localhost:5000/Bahanbaku`,
+    const response = await axiosJWT.patch(
+      `http://localhost:5000/Bahanbaku/${params.slug}`,
       {
         nama: nama,
         jenis: jenisValue,
-        stok: stock,
-        harga: harga,
+        stok: parseInt(stock),
+        harga: parseInt(harga),
         biayapesan: biayapesan,
         biayapenyimpanan: biayapenyimpanan,
         ukuran: ukuran,
@@ -41,7 +44,7 @@ export default function Home() {
         },
       }
     );
-    toat();
+    toat("edit");
     setMsg(response.data.msg);
     setHarga("");
     setNama("");
@@ -49,13 +52,14 @@ export default function Home() {
     setBiayapenyimpanan("");
     setBiayapesan("");
     setUkuran("");
+    setBahanvalue([]);
   };
 
   return (
     <div className={`mx-15 text-slate-500 pb-20`}>
       <div className="mb-10">
         <p className="text-3xl font-semibold pt-16 text-center">
-          Add Bahan Baku
+          Update Bahan Baku
         </p>
       </div>
 
@@ -66,10 +70,10 @@ export default function Home() {
         <form
           className="w-11/12 mx-auto"
           fdprocessedid="true"
-          onSubmit={postData}
+          onSubmit={update}
         >
           <label>
-            Nama Bahan{" "}
+            Nama Bahan
             <input
               value={nama || ""}
               type="text"

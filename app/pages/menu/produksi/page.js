@@ -15,7 +15,7 @@ export default function Home() {
   }, [msg, msg]);
 
   const delet = async (e) => {
-    const response = await axiosJWT.delete(`https://backendwebstock.vercel.app/Produksi/${e}`, {
+    const response = await axiosJWT.delete(`http://localhost:5000/Produksi/${e}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

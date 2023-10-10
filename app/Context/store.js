@@ -50,12 +50,13 @@ const Provider = ({ children }) => {
     getData_Barang();
     getTransaksi();
     getProduksi();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //token
   const getToken = async () => {
     axios
-      .get(`https://backendwebstock.vercel.app/token`)
+      .get(`http://localhost:5000/token`)
       .then((res) => {
         setToken(res.data.accessToken);
         const decode = jwt_decode(res.data.accessToken);
@@ -80,7 +81,7 @@ const Provider = ({ children }) => {
     async (config) => {
       const currentDate = new Date();
       if (exp * 1000 < currentDate.getTime()) {
-        const response = await axios.get("https://backendwebstock.vercel.app/token");
+        const response = await axios.get("http://localhost:5000/token");
         config.headers.Authorization = `Bearer ${response.data.accessToken}`;
         setToken(response.data.accessToken);
         const decode = jwt_decode(response.data.accessToken);
@@ -97,7 +98,7 @@ const Provider = ({ children }) => {
 
   //(1) jenis
   const getJenis = async (e) => {
-    const response = await axiosJWT.get(`https://backendwebstock.vercel.app/Jenis/serch?search_query=${e || ""}`, {
+    const response = await axiosJWT.get(`http://localhost:5000/Jenis/serch?search_query=${e || ""}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -106,7 +107,7 @@ const Provider = ({ children }) => {
   };
   //(2) rencana pembelian
   const rencana_pembelian = async (e) => {
-    const response = await axiosJWT.get(`https://backendwebstock.vercel.app/Pembelian`, {
+    const response = await axiosJWT.get(`http://localhost:5000/Pembelian`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -116,20 +117,20 @@ const Provider = ({ children }) => {
   //(3) Persedian
   const getBarangexel = () => {
     axiosJWT
-      .get(`https://backendwebstock.vercel.app/Pembelian/exel`, {
+      .get(`http://localhost:5000/Pembelian/exel`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then((res) => {
-        router.push("https://backendwebstock.vercel.app/Pembelian/exel");
+        router.push("http://localhost:5000/Pembelian/exel");
       })
       .catch((err) => {
         console.log(err);
       });
   };
   const getBarang = async (e) => {
-    const response = await axiosJWT.get(`https://backendwebstock.vercel.app/Pembelian/serch?search_query=${e || ""}`, {
+    const response = await axiosJWT.get(`http://localhost:5000/Pembelian/serch?search_query=${e || ""}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -138,7 +139,7 @@ const Provider = ({ children }) => {
   };
   //(4) Bahan baku
   const getBahanbakuSrch = async (e) => {
-    const response = await axiosJWT.get(`https://backendwebstock.vercel.app/Bahanbaku/serch?search_query=${e || ""}`, {
+    const response = await axiosJWT.get(`http://localhost:5000/Bahanbaku/serch?search_query=${e || ""}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -147,7 +148,7 @@ const Provider = ({ children }) => {
   };
   //(5) Data Barang
   const getData_Barang = async (e) => {
-    const response = await axiosJWT.get(`https://backendwebstock.vercel.app/Barang/serch?search_query=${e || ""}`, {
+    const response = await axiosJWT.get(`http://localhost:5000/Barang/serch?search_query=${e || ""}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -156,7 +157,7 @@ const Provider = ({ children }) => {
   };
   //(6) Transaksi
   const getTransaksi = async (serch, page) => {
-    const response = await axiosJWT.get(`https://backendwebstock.vercel.app/Transaksi/serch?search_query=${serch || ""}&limit=${limit || 5}&page=${page || ""}`, {
+    const response = await axiosJWT.get(`http://localhost:5000/Transaksi/serch?search_query=${serch || ""}&limit=${limit || 5}&page=${page || ""}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -165,13 +166,13 @@ const Provider = ({ children }) => {
   };
   const getTransaksiexel = () => {
     axiosJWT
-      .get(`https://backendwebstock.vercel.app/Transaksi/exel`, {
+      .get(`http://localhost:5000/Transaksi/exel`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then((res) => {
-        router.push("https://backendwebstock.vercel.app/Transaksi/exel");
+        router.push("http://localhost:5000/Transaksi/exel");
       })
       .catch((err) => {
         console.log(err);
@@ -179,7 +180,7 @@ const Provider = ({ children }) => {
   };
   //(7) Produksi
   const getProduksi = async (serch) => {
-    const response = await axiosJWT.get(`https://backendwebstock.vercel.app/Produksi/serch?search_query=${serch || ""}`, {
+    const response = await axiosJWT.get(`http://localhost:5000/Produksi/serch?search_query=${serch || ""}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

@@ -20,7 +20,7 @@ export default function Home() {
             <div className="w-11/12 mx-auto">
               <p className="uppercase font-semibold text-xl">{item.nama}</p>
               <p>
-                Jumlah stock mulai menipis ({item.stok} {item.jenis})
+                Jumlah stock ({item.stok} {item.jenis})
               </p>
               <p>{item.updatedAt.replace(/T/g, " | ").replace(".000Z", "")}</p>
             </div>

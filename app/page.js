@@ -13,7 +13,7 @@ export default function Home() {
   const auth = async (e) => {
     e.preventDefault();
     axios
-      .post("https://backendwebstock.vercel.app/login", {
+      .post("http://localhost:5000/login", {
         name: name,
         password: password,
       })

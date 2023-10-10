@@ -31,7 +31,7 @@ export default function Home() {
 
   const update = async (id, jenis) => {
     const response = await axiosJWT.patch(
-      `https://backendwebstock.vercel.app/Jenis/${id}`,
+      `http://localhost:5000/Jenis/${id}`,
       { jenis: jenis },
       {
         headers: {
@@ -47,7 +47,7 @@ export default function Home() {
   const delet = async (e) => {
     if (e.target.dataset.key !== undefined) {
       const id = e.target.dataset.key;
-      const response = await axiosJWT.delete(`https://backendwebstock.vercel.app/Jenis/${id}`, {
+      const response = await axiosJWT.delete(`http://localhost:5000/Jenis/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

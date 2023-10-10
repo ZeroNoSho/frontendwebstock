@@ -15,7 +15,7 @@ export default function Home() {
     if (data) {
       const datas = data.split(",");
       const response = await axiosJWT.post(
-        `https://backendwebstock.vercel.app/Transaksi/Keluar`,
+        `http://localhost:5000/Transaksi/Keluar`,
         {
           nama: datas[0],
           tipe: datas[1],
